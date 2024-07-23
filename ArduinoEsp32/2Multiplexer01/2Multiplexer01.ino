@@ -37,15 +37,14 @@ void loop() {
     readMultiplexer(MUX2_S0, MUX2_S1, MUX2_S2, MUX2_S3, MUX2_SIG, sensorValues2);
 
     for (int i = 0; i < 16; i++) {
-        Serial.print(sensorValues1[i]);
+        Serial.print(4095 - sensorValues1[i]);
         Serial.print(" ");
     }
-    Serial.println("");
     
 
     // Print sensor values for multiplexer 2
     for (int i = 0; i < 16; i++) {
-        Serial.print(sensorValues2[i]);
+        Serial.print(4095 - sensorValues2[i]);
         Serial.print(" ");
 
     }

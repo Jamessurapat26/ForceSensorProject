@@ -34,10 +34,17 @@ app.post('/persons', (req, res) => {
 });
 
 // Get all sensor data
+// app.get('/sensor_data', (req, res) => {
+//     pool.query('SELECT * FROM sensor_data', (err, results) => {
+//         if (err) return res.status(500).send(err);
+//         res.json(results);
+//     });
+// });
+
 app.get('/sensor_data', (req, res) => {
-    pool.query('SELECT * FROM sensor_data', (err, results) => {
+    pool.query('SELECT * FROM sensor_data ORDER BY Data_ID DESC LIMIT 1', (err, results) => {
         if (err) return res.status(500).send(err);
-        res.json(results);
+        res.json(results[0]); // Return only the most recent entry
     });
 });
 
